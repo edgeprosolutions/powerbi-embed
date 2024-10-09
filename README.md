@@ -16,7 +16,9 @@ This addon provides:
 
 ## How to Install
 
-You can search for this addon in the `Tools > Addons` section of the Statamic control panel and click **install**, or run the following command from your project root:
+Download the addon to the directory `addons/edge/powerbi-embed` in your project.
+
+Run the following command from your project root:
 
 ``` bash
 composer require edge/powerbi-embed
@@ -51,7 +53,7 @@ POWERBI_PLACEHOLDER_IMAGE=https://example.com/path/to/placeholder-image.jpg
 
 ```
 POWERBI_TEST_MODE=true
-POWERBI_PLACEHOLDER_IMAGE=https://sm.mashable.com/mashable_in/article/4/4-behind-t/4-behind-the-scenes-tidbits-from-the-baby-shower-episode_of_bq72.jpg
+POWERBI_PLACEHOLDER_IMAGE=https://10play.com.au/ip/s3/2022/06/07/936e014eeb8c66d6b83f9334cef1116f-1154393.jpg
 ```
 
 ## Example Usage
