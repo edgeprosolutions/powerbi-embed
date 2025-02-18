@@ -34,10 +34,10 @@ class ServiceProvider extends AddonServiceProvider
 
         $this->publishes([
             __DIR__ . '/../resources/js' => public_path('vendor/powerbi-embed/js'),
-        ], 'public');
+        ], 'powerbi-embed-js');
 
         $this->publishes([
             __DIR__ . '/../resources/css' => public_path('vendor/powerbi-embed/css'),
-        ], 'powerbi-embed-assets');
+        ], 'powerbi-embed-css');
     }
 }
