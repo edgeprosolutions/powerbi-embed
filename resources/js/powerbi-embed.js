@@ -1,5 +1,8 @@
 // Function to initialize a single PowerBI embed container
 function initPowerBIEmbed(container) {
+    if (container.dataset.initialized === 'true') {
+        return;
+    }
     // Read dynamic values from data attributes
     var elementId = container.getAttribute('data-element-id');
     var embedToken = container.getAttribute('data-embed-token');
@@ -34,21 +37,19 @@ function initPowerBIEmbed(container) {
 
     // Embed the PowerBI report
     window.powerbi.embed(container, config);
+    container.dataset.initialized = 'true';
     console.log('Initialized PowerBI embed for element ' + elementId);
 }
 
-// On initial DOM load, initialize all components
-document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.powerbi-container').forEach(function(container) {
-        initPowerBIEmbed(container);
-    });
+// Expose globally
+window.initPowerBIEmbed = initPowerBIEmbed;
+
+// Initialize all embed containers on initial DOM load
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.powerbi-container').forEach(initPowerBIEmbed);
 });
 
-// Re-run initialization on Livewire updates
-document.addEventListener('livewire:load', () => {
-    Livewire.hook('message.processed', (message, component) => {
-        document.querySelectorAll('.powerbi-container').forEach(function(container) {
-            initPowerBIEmbed(container);
-        });
-    });
+// Re-run initialization on Livewire updates (if applicable)
+document.addEventListener('livewire:navigated', () => {
+    document.querySelectorAll('.powerbi-container').forEach(initPowerBIEmbed);
 });
